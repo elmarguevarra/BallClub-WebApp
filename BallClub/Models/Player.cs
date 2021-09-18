@@ -6,13 +6,9 @@ namespace BallClub.Models
 {
     public class Player
     {
-        [Key]
         public int Id { get; set; }
-        [Key]
         public string Username { get; set; }
-        [ForeignKey("Team")]
         public int TeamId { get; set; }
-        [ForeignKey("Season")]
         public int SeasonId { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }

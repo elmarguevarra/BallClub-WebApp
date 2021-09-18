@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BallClub.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210918103731_AddPlayersToDb1")]
-    partial class AddPlayersToDb1
+    [Migration("20210918112152_deployTablesToBallClubDb")]
+    partial class deployTablesToBallClubDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -63,9 +63,8 @@ namespace BallClub.Migrations
                     b.Property<string>("Suffix")
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("TeamId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)");
+                    b.Property<int>("TeamId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Username")
                         .IsRequired()
@@ -83,7 +82,38 @@ namespace BallClub.Migrations
                     b.HasIndex("LastName")
                         .HasDatabaseName("Idx_LastName");
 
+                    b.HasIndex("TeamId");
+
                     b.ToTable("Players");
+                });
+
+            modelBuilder.Entity("BallClub.Models.Team", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id")
+                        .HasName("PK_Teams");
+
+                    b.HasIndex("Name")
+                        .HasDatabaseName("Idx_TeamName");
+
+                    b.ToTable("Teams");
+                });
+
+            modelBuilder.Entity("BallClub.Models.Player", b =>
+                {
+                    b.HasOne("BallClub.Models.Team", null)
+                        .WithMany()
+                        .HasForeignKey("TeamId")
+                        .HasConstraintName("FK_Players_Teams")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
