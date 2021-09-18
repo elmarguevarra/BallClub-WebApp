@@ -9,6 +9,6 @@ namespace BallClub.Models.Base
     public class Entity
     {
         [Key]
-        public int ID { get; set; }
+        public int Id { get; set; }
     }
 }
