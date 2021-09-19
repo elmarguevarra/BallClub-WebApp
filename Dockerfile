@@ -2,7 +2,7 @@
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 # copy csproj and restore as distinct layers
 COPY *.sln .
-COPY *.csproj ./BallClub/
+COPY BallClub/*.csproj ./BallClub/
 RUN dotnet restore
 
 # copy everything else and build app
