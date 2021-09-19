@@ -1,5 +1,6 @@
 using BallClub.Areas.Identity;
 using BallClub.Data;
+using BallClub.Repository.MySQL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
@@ -40,6 +41,13 @@ namespace BallClub
             services.AddServerSideBlazor();
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
             services.AddSingleton<WeatherForecastService>();
+
+            ConfigureDataAccess(services);
+        }
+
+        private void ConfigureDataAccess(IServiceCollection services)
+        {
+            services.AddSingleton<IDataAccess, DataAccess>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

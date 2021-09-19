@@ -1,0 +1,20 @@
+﻿@page "/team"
+
+@using BallClub.Repository.MySQL
+@using BallClub.Domain.Models
+@using Microsoft.Extensions.Configuration
+@inject IDataAccess _data
+@inject IConfiguration _config
+
+<h3>Team</h3>
+
+@code {
+    List<Team> teams;
+
+    protected override async Task OnInitializedAsync()
+    {
+        string sql = "select * from teams";
+
+        teams = await _data.LoadData<Team, dynamic>(sql, new { }, _config.GetConnectionString("DefaultConnection"));
+    }
+}

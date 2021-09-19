@@ -21,7 +21,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BallClub.Domain\BallClub.Domain.csproj" />
     <ProjectReference Include="..\BallClub.Repository.DTO\BallClub.Repository.DTO.csproj" />
+    <ProjectReference Include="..\BallClub.Repository.MySQL\BallClub.Repository.MySQL.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace DataLibrary
+namespace BallClub.Repository.MySQL
 {
     public interface IDataAccess
     {
