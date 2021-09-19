@@ -1,4 +1,4 @@
-﻿using BallClub.Models;
+﻿using BallClub.Repository.DTO.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 

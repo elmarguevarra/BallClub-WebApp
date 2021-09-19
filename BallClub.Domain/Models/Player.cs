@@ -1,9 +1,8 @@
-﻿using BallClub.Models.Base;
-using System.Collections.Generic;
+﻿using BallClub.Domain.Models.Base;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace BallClub.Models
+namespace BallClub.Domain.Models
 {
     public class Player : Entity
     {

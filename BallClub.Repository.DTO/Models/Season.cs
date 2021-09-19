@@ -1,5 +1,5 @@
 ﻿
-namespace BallClub.Models
+namespace BallClub.Repository.DTO.Models
 {
     public class Season
     {

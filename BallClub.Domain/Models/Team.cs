@@ -1,11 +1,19 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace BallClub.Models
+﻿namespace BallClub.Domain.Models
 {
     public class Team
     {
-        [Key]
+        public int TeamId { get; set; }
         public string Name { get; set; }
-        public Player[] Players { get; set; }
+
+        private Team(string name)
+        {
+            Name = name ?? 
+                throw new System.ArgumentNullException(nameof(name));
+        }
+
+        public static Team CreateTeam(string name)
+        {
+            return new Team(name);
+        }
     }
 }

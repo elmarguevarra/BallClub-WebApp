@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace BallClub.Migrations
+namespace BallClub.Data.Migrations
 {
-    public partial class deployTablesToBallClubDb : Migration
+    public partial class deployTablesToBallClubDb2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

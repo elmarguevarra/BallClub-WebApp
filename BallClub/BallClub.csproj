@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Migrations\" />
+    <ProjectReference Include="..\BallClub.Repository.DTO\BallClub.Repository.DTO.csproj" />
   </ItemGroup>
 
 </Project>

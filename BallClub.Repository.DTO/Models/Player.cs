@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace BallClub.Models
+﻿namespace BallClub.Repository.DTO.Models
 {
     public class Player
     {

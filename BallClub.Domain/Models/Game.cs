@@ -1,7 +1,7 @@
-﻿using BallClub.Models.Base;
+﻿using BallClub.Domain.Models.Base;
 using System;
 
-namespace BallClub.Models
+namespace BallClub.Domain.Models
 {
     public class Game : Entity
     {

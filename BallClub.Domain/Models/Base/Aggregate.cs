@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace BallClub.Models.Base
+﻿namespace BallClub.Domain.Models.Base
 {
     public class Aggregate
     {

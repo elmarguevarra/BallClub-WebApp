@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BallClub.Models
+namespace BallClub.Repository.DTO.Models
 {
     public class Game
     {

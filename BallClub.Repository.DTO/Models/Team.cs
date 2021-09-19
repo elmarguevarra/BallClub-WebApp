@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace BallClub.Models
+﻿namespace BallClub.Repository.DTO.Models
 {
     public class Team
     {

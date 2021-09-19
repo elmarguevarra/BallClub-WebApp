@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace BallClub.Migrations
+namespace BallClub.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210918140812_deployTablesToBallClubDb")]
-    partial class deployTablesToBallClubDb
+    [Migration("20210919023544_deployTablesToBallClubDb2")]
+    partial class deployTablesToBallClubDb2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
