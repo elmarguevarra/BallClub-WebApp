@@ -33,14 +33,14 @@ namespace BallClub.Data
             modelBuilder.Entity<Player>().HasKey(x => x.PlayerId).HasName("PK_Players");
 
             // Configure indexes
-            modelBuilder.Entity<Season>().HasIndex(x => x.Name).HasDatabaseName("Idx_SeasonName");
+            //modelBuilder.Entity<Season>().HasIndex(x => x.Name).HasDatabaseName("Idx_SeasonName");
 
-            modelBuilder.Entity<Game>().HasIndex(x => x.SeasonId).HasDatabaseName("Idx_GameSeason");
-            modelBuilder.Entity<Game>().HasIndex(x => x.Schedule).HasDatabaseName("Idx_GameSchedule");
-            modelBuilder.Entity<Game>().HasIndex(x => x.GameId).HasDatabaseName("Idx_GameTeamId");
-            modelBuilder.Entity<Team>().HasIndex(x => x.Name).HasDatabaseName("Idx_TeamName");
-            modelBuilder.Entity<Player>().HasIndex(x => x.FirstName).HasDatabaseName("Idx_FirstName");
-            modelBuilder.Entity<Player>().HasIndex(x => x.LastName).HasDatabaseName("Idx_LastName");
+            //modelBuilder.Entity<Game>().HasIndex(x => x.SeasonId).HasDatabaseName("Idx_GameSeason");
+            //modelBuilder.Entity<Game>().HasIndex(x => x.Schedule).HasDatabaseName("Idx_GameSchedule");
+            //modelBuilder.Entity<Game>().HasIndex(x => x.GameId).HasDatabaseName("Idx_GameTeamId");
+            //modelBuilder.Entity<Team>().HasIndex(x => x.Name).HasDatabaseName("Idx_TeamName");
+            //modelBuilder.Entity<Player>().HasIndex(x => x.FirstName).HasDatabaseName("Idx_FirstName");
+            //modelBuilder.Entity<Player>().HasIndex(x => x.LastName).HasDatabaseName("Idx_LastName");
 
 
             // Configure columns
