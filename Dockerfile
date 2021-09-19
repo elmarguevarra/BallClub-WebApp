@@ -3,10 +3,18 @@ FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 # copy csproj and restore as distinct layers
 COPY *.sln .
 COPY BallClub/*.csproj ./BallClub/
+COPY BallClub.Domain/*.csproj ./BallClub/
+COPY BallClub.Repositories/*.csproj ./BallClub/
+COPY BallClub.Repository.DTO/*.csproj ./BallClub/
+COPY BallClub.Repository.MySQL/*.csproj ./BallClub/
 RUN dotnet restore
 
 # copy everything else and build app
 COPY BallClub/. ./BallClub/
+COPY BallClub.Domain/. ./BallClub/
+COPY BallClub.Repositories/. ./BallClub/
+COPY BallClub.Repository.DTO/. ./BallClub/
+COPY BallClub.Repository.MySQL/. ./BallClub/
 WORKDIR /source/BallClub
 RUN dotnet publish -c release -o /app --no-restore
 
