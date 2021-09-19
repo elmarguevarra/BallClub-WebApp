@@ -1,8 +1,8 @@
-﻿using BallClub.Repository.DTO.Messages;
+﻿using BallClub.Repositories.Messages;
 using Microsoft.EntityFrameworkCore;
 using System;
 
-namespace BallClub.Data
+namespace BallClub.Repositories.Data
 {
     public class ApplicationDbContext : DbContext
     {
