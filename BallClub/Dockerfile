@@ -13,7 +13,7 @@ COPY ["BallClub.Domain/BallClub.Domain.csproj", "BallClub.Domain/"]
 COPY ["BallClub.Repository.MySQL/BallClub.Repository.Dapper.csproj", "BallClub.Repository.MySQL/"]
 RUN dotnet restore "BallClub/BallClub.csproj"
 COPY . .
-WORKDIR "/src/BallClub"
+WORKDIR "/src"
 RUN dotnet build "BallClub.csproj" -c Release -o /app/build
 
 FROM build AS publish
