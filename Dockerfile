@@ -11,10 +11,10 @@ COPY ["BallClub.csproj", "BallClub/"]
 RUN dotnet restore "BallClub.csproj"
 COPY . .
 WORKDIR "/src"
-RUN dotnet build "BallClub.csproj" -c Release -o /app/build
+RUN dotnet build "BallClub/BallClub.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "BallClub.csproj" -c Release -o /app/publish
+RUN dotnet publish "BallClub/BallClub.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
