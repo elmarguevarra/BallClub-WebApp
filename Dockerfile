@@ -1,26 +1,38 @@
-#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
-FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
-# copy csproj and restore as distinct layers
-COPY *.sln .
-COPY BallClub/*.csproj ./BallClub/
-COPY BallClub.Domain/*.csproj ./BallClub/
-COPY BallClub.Repositories/*.csproj ./BallClub/
-COPY BallClub.Repository.DTO/*.csproj ./BallClub/
-COPY BallClub.Repository.MySQL/*.csproj ./BallClub/
-RUN dotnet restore
-
-# copy everything else and build app
-COPY BallClub/. ./BallClub/
-COPY BallClub.Domain/. ./BallClub/
-COPY BallClub.Repositories/. ./BallClub/
-COPY BallClub.Repository.DTO/. ./BallClub/
-COPY BallClub.Repository.MySQL/. ./BallClub/
-WORKDIR /source/BallClub
-RUN dotnet publish -c release -o /app --no-restore
-
-# final stage/image
-FROM mcr.microsoft.com/dotnet/aspnet:5.0
+FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
 WORKDIR /app
-COPY --from=build /app ./
 EXPOSE 80
+
+FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
+WORKDIR /src
+COPY *.sln ./
+COPY BallClub/*.csproj ./BallClub/
+COPY BallClub.Domain/*.csproj ./BallClub.Domain/
+COPY BallClub.Repositories/*.csproj ./BallClub.Repositories/
+COPY BallClub.Repository.DTO/*.csproj ./BallClub.Repository.DTO/
+COPY BallClub.Repository.MySQL/*.csproj ./BallClub.Repository.MySQL/
+RUN dotnet restore 
+
+
+COPY . .
+WORKDIR /src/BallClub
+RUN dotnet build -c Release -o /app
+
+WORKDIR /src/BallClub.Domain
+RUN dotnet build -c Release -o /app
+
+WORKDIR /src/BallClub.Repositories
+RUN dotnet build -c Release -o /app
+
+WORKDIR /src/BallClub.Repository.DTO
+RUN dotnet build -c Release -o /app
+
+WORKDIR /src/BallClub.Repository.MySQL
+RUN dotnet build -c Release -o /app
+
+FROM build AS publish
+RUN dotnet publish -c Release -o /app
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app .
 ENTRYPOINT ["dotnet", "BallClub.dll"]
