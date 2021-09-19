@@ -56,6 +56,7 @@ namespace BallClub
         private void ConfigureTranslators(IServiceCollection services)
         {
             services.AddScoped<ITranslator<DOMAIN.Team, DTO.TeamDTO>, TeamDomaintoDTOTranslator>();
+            services.AddScoped<ITranslator<DTO.TeamDTO, DOMAIN.Team>, TeamDTOtoDomainTranslator>();
         }
 
         private void ConfigureRepositories(IServiceCollection services)
