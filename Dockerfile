@@ -6,6 +6,7 @@ EXPOSE 80
 EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
+WORKDIR /src
 COPY ["BallClub/BallClub.csproj", "BallClub/"]
 COPY ["BallClub.Repositories/BallClub.Repositories.csproj", "BallClub.Repositories/"]
 COPY ["BallClub.Domain/BallClub.Domain.csproj", "BallClub.Domain/"]
