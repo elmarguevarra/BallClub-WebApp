@@ -1,6 +1,7 @@
 ﻿using BallClub.Repositories.Data;
 using BallClub.Repositories.Interfaces;
 using BallClub.Repositories.Messages;
+using System.Threading.Tasks;
 using DOMAIN = BallClub.Domain.Models;
 
 namespace BallClub.Repositories
@@ -20,11 +21,11 @@ namespace BallClub.Repositories
                 throw new System.ArgumentNullException(nameof(translator));
         }
 
-        public DOMAIN.Team Add(DOMAIN.Team team)
+        public async Task<DOMAIN.Team> AddAsync(DOMAIN.Team team)
         {
             var teamDTO = _translator.Translate(team);
-            _dbContext.Add(teamDTO);
-            _dbContext.SaveChanges();
+            await _dbContext.AddAsync(teamDTO);
+            await _dbContext.SaveChangesAsync();
 
             return team;
         }

@@ -89,21 +89,21 @@ namespace BallClub.Repositories.Data
                     v => v.Split(',', StringSplitOptions.RemoveEmptyEntries));
 
             //Configure relationships
-            modelBuilder.Entity<GameDTO>().HasOne<SeasonDTO>().WithMany()
-                .HasPrincipalKey(ug => ug.SeasonId).HasForeignKey(x => x.SeasonId)
-                .OnDelete(DeleteBehavior.NoAction).HasConstraintName("FK_Games_Seasons");
+            //modelBuilder.Entity<GameDTO>().HasOne<SeasonDTO>().WithMany()
+            //    .HasPrincipalKey(ug => ug.SeasonId).HasForeignKey(x => x.SeasonId)
+            //    .OnDelete(DeleteBehavior.NoAction).HasConstraintName("FK_Games_Seasons");
 
-            modelBuilder.Entity<GameDTO>().HasMany<TeamDTO>().WithOne()
-                //.HasPrincipalKey(ug => ug.TeamIds).HasForeignKey(x => x.TeamId)
-                .OnDelete(DeleteBehavior.NoAction).HasConstraintName("FK_Games_Teams");
+            //modelBuilder.Entity<GameDTO>().HasMany<TeamDTO>().WithOne()
+            //    //.HasPrincipalKey(ug => ug.TeamIds).HasForeignKey(x => x.TeamId)
+            //    .OnDelete(DeleteBehavior.NoAction).HasConstraintName("FK_Games_Teams");
 
-            modelBuilder.Entity<GameDTO>().HasMany<PlayerDTO>().WithOne()
-                //.HasPrincipalKey(ug => ug.PlayerIds).HasForeignKey(x => x)
-                .OnDelete(DeleteBehavior.NoAction).HasConstraintName("FK_Games_Players");
+            //modelBuilder.Entity<GameDTO>().HasMany<PlayerDTO>().WithOne()
+            //    //.HasPrincipalKey(ug => ug.PlayerIds).HasForeignKey(x => x)
+            //    .OnDelete(DeleteBehavior.NoAction).HasConstraintName("FK_Games_Players");
 
-            modelBuilder.Entity<PlayerDTO>().HasOne<TeamDTO>().WithMany()
-                .HasPrincipalKey(t => t.TeamId).HasForeignKey(p => p.TeamId)
-                .OnDelete(DeleteBehavior.NoAction).HasConstraintName("FK_Players_Teams");
+            //modelBuilder.Entity<PlayerDTO>().HasOne<TeamDTO>().WithMany()
+            //    .HasPrincipalKey(t => t.TeamId).HasForeignKey(p => p.TeamId)
+            //    .OnDelete(DeleteBehavior.NoAction).HasConstraintName("FK_Players_Teams");
         }
     }
 }

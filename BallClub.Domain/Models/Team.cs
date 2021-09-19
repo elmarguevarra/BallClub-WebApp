@@ -2,8 +2,8 @@
 {
     public class Team
     {
-        public int TeamId { get; set; }
-        public string Name { get; set; }
+        public int TeamId { get; private set; }
+        public string Name { get; private set; }
 
         private Team(string name)
         {
