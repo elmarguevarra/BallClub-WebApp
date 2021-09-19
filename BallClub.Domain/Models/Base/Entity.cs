@@ -1,4 +1,6 @@
-﻿namespace BallClub.Domain.Models.Base
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace BallClub.Domain.Models.Base
 {
     public class Entity
     {

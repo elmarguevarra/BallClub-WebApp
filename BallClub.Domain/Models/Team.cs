@@ -1,19 +1,25 @@
-﻿namespace BallClub.Domain.Models
-{
-    public class Team
-    {
-        public int TeamId { get; private set; }
-        public string Name { get; private set; }
+﻿using BallClub.Domain.Models.Base;
 
-        private Team(string name)
+namespace BallClub.Domain.Models
+{
+    public class Team : Entity
+    {
+        //TODO: Make this private set
+        public string Name { get; set; }
+
+        private Team(int id, string name)
         {
+            Id = id;
             Name = name ?? 
                 throw new System.ArgumentNullException(nameof(name));
         }
-
-        public static Team CreateTeam(string name)
+        public Team()
         {
-            return new Team(name);
+
+        }
+        public static Team CreateTeam(string name, int id = 0)
+        {
+            return new Team(id, name);
         }
     }
 }

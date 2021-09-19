@@ -1,0 +1,49 @@
+﻿@page "/editTeam/{Id}"
+
+@using DOMAIN = BallClub.Domain.Models
+@using BallClub.Repositories.Interfaces
+@using Microsoft.Extensions.Configuration
+@inject ITeamRepository _teamRepo
+@inject IConfiguration _config
+
+@inject Microsoft.AspNetCore.Components.NavigationManager navigationManager
+
+<div class="row">
+    <div class="col-md-4">
+        <form>
+            <div class="form-group">
+                <label for="Name" class="control-label">Name</label>
+                <input for="Name" class="form-control" @bind-value="@teamModel.Name" />
+                <input type="hidden" @bind-value="@teamModel.Id" />
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btn-primary" @onclick="() => UpdateTeam()">Save</button>
+                <button type="button" class="btn btn-danger" @onclick="() => cancel()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@code  {
+
+    [Parameter]
+    public string ID { get; set; }
+
+    DOMAIN.Team teamModel = new DOMAIN.Team();
+
+    protected override async Task OnInitializedAsync()
+    {
+        teamModel = _teamRepo.Find(Convert.ToInt32(ID));
+    }
+
+    protected async Task UpdateTeam()
+    {
+        _teamRepo.Update(teamModel);
+        navigationManager.NavigateTo("/teamList");
+    }
+
+    void cancel()
+    {
+        navigationManager.NavigateTo("/teamList");
+    }
+}

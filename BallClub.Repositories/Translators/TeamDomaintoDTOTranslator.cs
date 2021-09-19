@@ -10,6 +10,7 @@ namespace BallClub.Repositories.Translators
         {
             return new TeamDTO
             {
+                TeamId = team.Id,
                 Name = team.Name
             };
         }

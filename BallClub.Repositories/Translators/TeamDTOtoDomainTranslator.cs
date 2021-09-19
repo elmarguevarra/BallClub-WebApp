@@ -8,7 +8,7 @@ namespace BallClub.Repositories.Translators
     {
         public DOMAIN.Team Translate(TeamDTO team)
         {
-            return DOMAIN.Team.CreateTeam(team.Name);
+            return DOMAIN.Team.CreateTeam(team.Name, team.TeamId);
         }
     }
 }

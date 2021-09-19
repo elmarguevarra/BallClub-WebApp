@@ -1,6 +1,9 @@
 ﻿using BallClub.Repositories.Messages;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace BallClub.Repositories.Data
 {
@@ -19,6 +22,11 @@ namespace BallClub.Repositories.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Use Fluent API to configure  
+
+            var valueComparer = new ValueComparer<string[]>(
+                    (c1, c2) => c1.SequenceEqual(c2),
+                    c => c.Aggregate(0, (a, v) => HashCode.Combine(a, v.GetHashCode())),
+                    c => c.ToArray());
 
             // Map entities to tables
             modelBuilder.Entity<SeasonDTO>().ToTable("Seasons");
@@ -55,13 +63,17 @@ namespace BallClub.Repositories.Data
                 .Property(e => e.TeamIds)
                 .HasConversion(
                     v => string.Join(',', v),
-                    v => v.Split(',', StringSplitOptions.RemoveEmptyEntries));
+                    v => v.Split(',', StringSplitOptions.RemoveEmptyEntries))
+                .Metadata
+                .SetValueComparer(valueComparer);
 
             modelBuilder.Entity<GameDTO>()
                 .Property(e => e.PlayerIds)
                 .HasConversion(
                     v => string.Join(',', v),
-                    v => v.Split(',', StringSplitOptions.RemoveEmptyEntries));
+                    v => v.Split(',', StringSplitOptions.RemoveEmptyEntries))
+                .Metadata
+                .SetValueComparer(valueComparer);
 
 
             modelBuilder.Entity<TeamDTO>().Property(x => x.TeamId).HasColumnType("int").IsRequired();
@@ -86,7 +98,9 @@ namespace BallClub.Repositories.Data
                 .Property(e => e.SocialMediaLinks)
                 .HasConversion(
                     v => string.Join(',', v),
-                    v => v.Split(',', StringSplitOptions.RemoveEmptyEntries));
+                    v => v.Split(',', StringSplitOptions.RemoveEmptyEntries))
+                .Metadata
+                .SetValueComparer(valueComparer);
 
             //Configure relationships
             //modelBuilder.Entity<GameDTO>().HasOne<SeasonDTO>().WithMany()
