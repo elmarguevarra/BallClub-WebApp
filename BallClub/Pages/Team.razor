@@ -11,10 +11,10 @@
 @code {
     List<Team> teams;
 
-    protected override async Task OnInitializedAsync()
-    {
-        string sql = "select * from teams";
+    //protected override async Task OnInitializedAsync()
+    //{
+    //    string sql = "select * from teams";
 
-        teams = await _data.LoadData<Team, dynamic>(sql, new { }, _config.GetConnectionString("DefaultConnection"));
-    }
+    //    teams = await _data.LoadData<Team, dynamic>(sql, new { }, _config.GetConnectionString("DefaultConnection"));
+    //}
 }

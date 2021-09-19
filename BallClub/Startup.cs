@@ -4,6 +4,10 @@ using BallClub.Repositories;
 using BallClub.Repositories.Data;
 using BallClub.Repositories.Interfaces;
 using BallClub.Repository.MySQL;
+
+using DOMAIN = BallClub.Domain.Models;
+using DTO = BallClub.Repositories.Messages;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Hosting;
@@ -12,6 +16,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
+using BallClub.Repositories.Translators;
 
 namespace BallClub
 {
@@ -40,6 +46,12 @@ namespace BallClub
 
             ConfigureDataAccess(services);
             ConfigureRepositories(services);
+            ConfigureTranslators(services);
+        }
+
+        private void ConfigureTranslators(IServiceCollection services)
+        {
+            services.AddScoped<ITranslator<DOMAIN.Team, DTO.TeamDTO>, TeamDomaintoDTOTranslator>();
         }
 
         private void ConfigureRepositories(IServiceCollection services)
