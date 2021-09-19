@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace BallClub.Repository.DTO.Models
+namespace BallClub.Repository.DTO.Messages
 {
-    public class Game
+    public class GameDTO
     {
         public int GameId { get; set; }
         public DateTime Schedule { get; set; }

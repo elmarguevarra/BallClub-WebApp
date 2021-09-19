@@ -1,7 +1,7 @@
 ﻿
-namespace BallClub.Repository.DTO.Models
+namespace BallClub.Repository.DTO.Messages
 {
-    public class Season
+    public class SeasonDTO
     {
         public int SeasonId { get; set; }
         public string Name { get; set; }

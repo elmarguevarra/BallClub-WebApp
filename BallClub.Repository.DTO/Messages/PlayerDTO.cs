@@ -1,6 +1,6 @@
-﻿namespace BallClub.Repository.DTO.Models
+﻿namespace BallClub.Repository.DTO.Messages
 {
-    public class Player
+    public class PlayerDTO
     {
         public int PlayerId { get; set; }
         public string Username { get; set; }
