@@ -34,9 +34,6 @@ namespace BallClub
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            string mySqlConnectionStr = Configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContextPool<ApplicationDbContext>(options => options.UseMySql(mySqlConnectionStr, ServerVersion.AutoDetect(mySqlConnectionStr)));
-
             //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
             //    .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddRazorPages();
@@ -44,9 +41,16 @@ namespace BallClub
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
             services.AddSingleton<WeatherForecastService>();
 
-            ConfigureDataAccess(services);
+            ConfigureDataBase(services);
             ConfigureRepositories(services);
             ConfigureTranslators(services);
+        }
+
+        private void ConfigureDataBase(IServiceCollection services)
+        {
+            string mySqlConnectionStr = Configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContextPool<ApplicationDbContext>(options => 
+                options.UseMySql(mySqlConnectionStr, ServerVersion.AutoDetect(mySqlConnectionStr)));
         }
 
         private void ConfigureTranslators(IServiceCollection services)
@@ -59,10 +63,11 @@ namespace BallClub
             services.AddScoped<ITeamRepository, TeamRepository>();
         }
 
-        private void ConfigureDataAccess(IServiceCollection services)
-        {
-            services.AddSingleton<IDataAccess, DataAccess>();
-        }
+        /// For Dapper ORM
+        //private void ConfigureDataAccess(IServiceCollection services)
+        //{
+        //    services.AddSingleton<IDataAccess, DataAccess>();
+        //}
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

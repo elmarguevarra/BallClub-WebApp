@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31613.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BallClub", "BallClub\BallClub.csproj", "{1751B04F-BCD7-4673-B8D6-426CD4B0BD91}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BallClub.Repository.MySQL", "BallClub.Repository.MySQL\BallClub.Repository.MySQL.csproj", "{71DBC55C-B98D-4DBE-BFDF-96870BBE6136}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BallClub.Repository.Dapper", "BallClub.Repository.MySQL\BallClub.Repository.Dapper.csproj", "{71DBC55C-B98D-4DBE-BFDF-96870BBE6136}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BallClub.Domain", "BallClub.Domain\BallClub.Domain.csproj", "{7BA71F59-D8E3-4EBE-A73A-A603C8A27BF2}"
 EndProject

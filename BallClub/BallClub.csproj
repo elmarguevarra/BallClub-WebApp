@@ -25,7 +25,7 @@
   <ItemGroup>
     <ProjectReference Include="..\BallClub.Domain\BallClub.Domain.csproj" />
     <ProjectReference Include="..\BallClub.Repositories\BallClub.Repositories.csproj" />
-    <ProjectReference Include="..\BallClub.Repository.MySQL\BallClub.Repository.MySQL.csproj" />
+    <ProjectReference Include="..\BallClub.Repository.MySQL\BallClub.Repository.Dapper.csproj" />
   </ItemGroup>
 
 </Project>
